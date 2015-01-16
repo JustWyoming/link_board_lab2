@@ -1,0 +1,16 @@
+<h1> Comments Page </h1>
+<h3> Recent Posts </h3>
+
+<h3> <%= link_to @post.title, @post.link, :target => "_blank" %> </h3>
+    <h5>Post Comment</h5>
+    <%= form_for @comment, url: post_comments_path, html: {class: "form"} do |f| %>
+      <div class="form-group">
+          <%= f.text_area :body, :placeholder => "enter your comment", :class => "form-control" %>
+      </div>
+          <%= f.submit "Post Comment", :class => "btn btn-warning btn-sm" %>
+    <% end %>
+
+<br/><ul class="list">
+<%= render :partial => 'comment', :collection => @post.comments %> <!-- collection takes an array and renders partial -->
+
+</ul>

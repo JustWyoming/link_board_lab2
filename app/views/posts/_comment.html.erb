@@ -1,0 +1,18 @@
+<!-- template for every comment, partials have to start with _filename.html.erb -->
+<li class="comment">
+<div>
+ <%= button_to "Vote", comment_create_vote_path(comment), :class => "btn btn-warning btn-sm"%><%= comment.votes.length%> <%= comment.user ? comment.user.name : "Unkown" %> <small> (<%= format_creation_time comment %>)</small><br/>
+</div>
+
+<div>
+  <%= comment.body %>
+  <%= link_to "reply", new_comment_comment_path(comment)%>
+</div>
+
+  <% unless comment.comments.empty? %>
+    <ul class="comment_list">
+      <%= render :partial => 'comment', :collection => comment.comments %>
+    </ul>
+  <% end %>
+
+</li>

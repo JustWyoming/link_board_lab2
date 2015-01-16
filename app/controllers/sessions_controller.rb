@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    reset_session # ruby method to end session - not good for follow-up marketing, etc. good for simple sign up tho
     redirect_to root_path
   end
 
